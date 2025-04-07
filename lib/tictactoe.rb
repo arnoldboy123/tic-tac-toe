@@ -1,6 +1,6 @@
-require_relative 'grid'
+require_relative 'gameplay'
 
-tictactoe_grid = Grid.new
+tictactoe_grid = Gameplay.new
 
 # Game loop
 while !tictactoe_grid.game_ended?
