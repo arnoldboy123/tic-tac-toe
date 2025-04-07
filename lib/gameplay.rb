@@ -7,6 +7,19 @@ class Gameplay
         @current_player = 'X'
     end
 
+    def play()
+        while !game_ended?()
+            print_grid()
+            puts "Where would you like to make a move? Horizontal (1,2,3)"
+            user_input_x = gets().chomp.to_i
+            puts "Where would you like to make a move? Vertical (1,2,3)"
+            user_input_y = gets().chomp.to_i
+            make_a_move(user_input_x, user_input_y)
+        end
+    end
+
+    private
+
     def print_grid()
         @current_game.each do |row|
             puts row.join(" ")
@@ -26,19 +39,6 @@ class Gameplay
         @current_game[x - 1][y - 1] = @current_player
         flip_player()
     end
-
-    def play()
-        while !game_ended?()
-            print_grid()
-            puts "Where would you like to make a move? Horizontal (1,2,3)"
-            user_input_x = gets().chomp.to_i
-            puts "Where would you like to make a move? Vertical (1,2,3)"
-            user_input_y = gets().chomp.to_i
-            make_a_move(user_input_x, user_input_y)
-        end
-    end
-
-    private
 
     def core_game_loop()
     end
