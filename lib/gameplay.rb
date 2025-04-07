@@ -19,14 +19,29 @@ class Gameplay
 
     def make_a_move(x, y)
         if !is_valid_move?(x, y)
-            raise Exception "Not a valid move, please enter number between 1 to 3"
+            puts "Not a valid move, please enter number between 1 to 3 which are not currently occupied by a token"
+            play()
         end
         # Go from index 1 to index 0
         @current_game[x - 1][y - 1] = @current_player
         flip_player()
     end
 
+    def play()
+        while !game_ended?()
+            print_grid()
+            puts "Where would you like to make a move? Horizontal (1,2,3)"
+            user_input_x = gets().chomp.to_i
+            puts "Where would you like to make a move? Vertical (1,2,3)"
+            user_input_y = gets().chomp.to_i
+            make_a_move(user_input_x, user_input_y)
+        end
+    end
+
     private
+
+    def core_game_loop()
+    end
 
     def flip_player()
         if @current_player == 'X'
